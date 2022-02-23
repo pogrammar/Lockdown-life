@@ -1,2 +1,4 @@
 py-cord==2.0.0b4
 asyncdagpi
+beautifulsoup4
+google
