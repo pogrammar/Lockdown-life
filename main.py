@@ -218,4 +218,5 @@ async def warn(user, change = 1, mode = "warns"):
 
     return warns
     
-bot.run("OTIwOTAwMDA2NDE0NzkwNzA3.YbrE9w.UjX_NG3qkF2NFh5eIxIlBA74Rfg")
+TOKEN = os.getenv("TOKEN")
+bot.run(TOKEN)
