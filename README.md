@@ -11,6 +11,8 @@ https://discord.gg/YADDMyF77y
 - Util commands
 - polls
 - games
-- Image commands
 - 95% uptime
 - 90% slash commands
+
+# Contact me:
+- betches.py#2117
