@@ -58,14 +58,6 @@ class helpcommand(commands.Cog):
         e2 = discord.Embed(title="Util commands", description="Below are the util commands:\n `suggest`, `serverinfo`,`userinfo`")
     
         await ctx.respond(embed=e2)
-        
-    @help.command()
-    async def image(ctx):
-    
-        e2 = discord.Embed(title="Image commands: prefixed", description="Below are the image commands:\n `pixel`,`meme`,`tweet`,`triggered`,`wasted`,`angel`,`hitler`,`delete`,`wanted`,`jail`,`trash`,`discord`")
-    
-        await ctx.respond(embed=e2)
-
 
     bot.add_application_command(help)   
 
