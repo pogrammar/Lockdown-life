@@ -27,4 +27,4 @@ class Google(commands.Cog):
                 await ctx.send(f"\n:point_right: {j}")
             await ctx.send("Have any more questions:question:\nFeel free to ask again :smiley: !")
 def setup(bot):
-    bot.add_cog(google(bot))
+    bot.add_cog(Google(bot))
