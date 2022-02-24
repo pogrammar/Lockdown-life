@@ -14,28 +14,16 @@ import json
 from typing import List
 from discord.commands import slash_command
 
-class Modal(Modal):
-    def __init__(self, *args, **kwargs) -> None:
-        super().__init__(*args, **kwargs)
-        self.add_item(InputText(label="Search query", placeholder="Search query"))
-
-
-    async def callback(self, interaction: discord.Interaction):
-    	embed = discord.Embed(title=f"New google search results", description=f"search query: {self.children[0].value}", color=discord.Color.random())      
-    	for j in search(self.children[0].value, num=1, stop=1, pause=2): 
-    		embed.add_field(name=j, value="google search query")
-
-        
-        await interaction.response.send_message(embed=embed)
-
-class google(commands.Cog):
-	def __init__(self, bot):
+class Google(commands.Cog):
+    def __init__(self, bot):
         self.bot = bot
 
     @slash_command(guild_ids=[918748880705839105])
-    async def googlesearch(ctx):
-    	modal = Modal(title="Google search")
-        await ctx.interaction.response.send_modal(modal)
-
+    async def googlesearch(ctx, query: Option(str, "Search query")):
+	async with ctx.typing():
+            embed = discord.Embed(title="Google search", description="Here are your results:")
+	    for j in search(query, tld="co.in", num=1, stop=1, pause=2): 
+			embed.add_field(name=j, description=f"Result for search query: {query}")
+        await ctx.respond(embed=embed) 
 def setup(bot):
     bot.add_cog(google(bot))
