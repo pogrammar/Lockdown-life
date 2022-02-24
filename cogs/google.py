@@ -14,7 +14,7 @@ import json
 from typing import List
 from discord.commands import slash_command
 
-class Google(commands.Cog):
+class Class1234(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
@@ -27,4 +27,4 @@ class Google(commands.Cog):
                 await ctx.send(f"\n:point_right: {j}")
             await ctx.send("Have any more questions:question:\nFeel free to ask again :smiley: !")
 def setup(bot):
-    bot.add_cog(Google(bot))
+    bot.add_cog(Class1234(bot))
