@@ -18,12 +18,13 @@ class Google(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @slash_command(guild_ids=[918748880705839105])
-    async def googlesearch(ctx, query: Option(str, "Search query")):
-	async with ctx.typing():
-            embed = discord.Embed(title="Google search", description="Here are your results:")
-	    for j in search(query, tld="co.in", num=1, stop=1, pause=2): 
-			embed.add_field(name=j, description=f"Result for search query: {query}")
-        await ctx.respond(embed=embed) 
+    @bot.command()
+    async def find(ctx,*, query):
+        author = ctx.author.mention
+        await ctx.channel.send(f"Here are the links related to your question {author} !")
+        async with ctx.typing():
+            for j in search(query, tld="co.in", num=3, stop=3, pause=2): 
+                await ctx.send(f"\n:point_right: {j}")
+            await ctx.send("Have any more questions:question:\nFeel free to ask again :smiley: !")
 def setup(bot):
     bot.add_cog(google(bot))
