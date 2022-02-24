@@ -6,8 +6,6 @@ from discord.commands import Option
 from discord import utils
 from discord.commands import SlashCommandGroup
 import datetime
-from googlesearch import search 
-import beautifulsoup4
 from datetime import datetime, timedelta
 import random
 import asyncio
@@ -220,15 +218,6 @@ async def warn(user, change = 1, mode = "warns"):
 
     return warns
     
-
-@bot.command()
-async def find(ctx,*, query):
-    author = ctx.author.mention
-    await ctx.channel.send(f"Here are the links related to your question {author} !")
-    async with ctx.typing():
-        for j in search(query, tld="co.in", num=1, stop=1, pause=2): 
-            await ctx.send(f"\n:point_right: {j}")
-        await ctx.send("Have any more questions:question:\nFeel free to ask again :smiley: !")
 
 TOKEN = os.getenv("TOKEN")
 bot.run(TOKEN)
