@@ -19,7 +19,7 @@ class Google(commands.Cog):
         self.bot = bot
 
     @bot.command()
-    async def find(ctx,*, query):
+    async def search(ctx,*, query):
         author = ctx.author.mention
         await ctx.channel.send(f"Here are the links related to your question {author} !")
         async with ctx.typing():
