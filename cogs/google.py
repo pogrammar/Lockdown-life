@@ -18,7 +18,7 @@ class Google(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @bot.command(aliases=['gs', 'google'])
+    @commands.command(aliases=['gs', 'google'])
     async def googlesearch(self, ctx,*, query):
         author = ctx.author.mention
         await ctx.channel.send(f"Here are the links related to your question {author} !")
