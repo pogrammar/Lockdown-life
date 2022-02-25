@@ -1,5 +1,5 @@
 # Lockdown-life
-The bot for the lockdown life discord server
+The bot for the lockdown life discord server. Reccomended to use this only if you are using heroku as your host.
 
 # Discord server invite: 
 
