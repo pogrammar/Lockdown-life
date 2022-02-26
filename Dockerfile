@@ -4,6 +4,6 @@ WORKDIR /app
 
 COPY . .
 
-RUN python3 -m pip install -U discord.py python-dotenv
+RUN python3 -m pip install -r requirements.txt
 
 CMD python -u ./main.py
