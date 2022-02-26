@@ -80,58 +80,6 @@ class Moderation(commands.Cog):
         await msg.add_reaction('<:a_:920520686227845230>')
         await msg.add_reaction('<:b_:920520686278172742>')
         
-    @slash_command(guild_ids=[918748880705839105])
-    @commands.has_permissions(kick_members = True)
-    async def warnuser(self, ctx, member: Option(discord.Member, "Member"), reason: Option(str, "reason")):
-        await self.open_account(member)
-    
-        users = await self.get_user_data()
-    
-        warns = await self.warn(member)
-    
-        await ctx.respond(f"<@{member.id}> warned with reason: **{reason}**. They now have {warns} warns.")
-    
-    @slash_command(guild_ids=[918748880705839105])
-    async def warnings(self, ctx, member: Option(discord.Member, "Member")):
-        await self.open_account(member)
-    
-        users = await self.get_user_data()
-    
-        warns = users[str(member.id)]["warns"]
-    
-        await ctx.respond(f"{member.name} has {warns} warns.")     
-        
-
-    async def open_account(self, user):
-        with open ("./reports.json","r")as f:
-            users = json.load(f)
-        if str (user.id) in users:
-            return False
-        else:
-            users[str(user.id)] = {}
-            users[str(user.id)]["warns"] = 0
-        
-        with open("./reports.json","w")as f:
-            json.dump(users, f)
-            
-    async def get_user_data(self):
-        with open ("./reports.json","r")as f:
-            users = json.load(f)
-        return users    
-    
-    async def warn(self, user, change = 1, mode = "warns"):
-        users = await self.get_user_data()
-    
-        users[str(user.id)][mode] += change
-    
-        with open("./reports.json","w")as f:
-            json.dump(users, f)
-        
-        warns = users[str(user.id)][mode]
-    
-        return warns
-       
-    
     
     @slash_command(guild_ids=[918748880705839105], description="get deh mod app")
     async def mod(self, ctx):

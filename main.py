@@ -17,14 +17,14 @@ from typing import List
 bot = commands.Bot(command_prefix='~', 
                    help_command=None, 
                    intents = discord.Intents.all(), 
-                   status=discord.Status.idle, 
+                   status=discord.Status.dnd, 
                    owner_id=734641452214124674,
                   )
 for filename in os.listdir("./cogs"):# for every file in a folder in cogs
     if filename.endswith('.py'): #if the file is a python file and if the file is a cog
         bot.load_extension(f'cogs.{filename[:-3]}')#load the extension"
 
-statuses = cycle(["With the API", "Suggest with /suggest!", "/help", "pycord", "With discord imput forms", "New game commands! /help game"])
+statuses = cycle(["With the API", "Suggest with /suggest!", "/help", "pycord", "With discord imput forms", "Check out my github repo!","Thank you for 100 members!"])
 
 @tasks.loop(seconds=5.0)
 async def status_change():
@@ -32,7 +32,7 @@ async def status_change():
     
     
 
-help = SlashCommandGroup(name="help", description="help", guild_ids=[918748880705839105])      
+help = SlashCommandGroup(name="help", description="get information on my commands", guild_ids=[918748880705839105])      
 
 class helpcommand(commands.Cog):
     def __init__(self, bot):
@@ -48,12 +48,12 @@ class helpcommand(commands.Cog):
     @help.command()
     async def fun(ctx):
     
-        e2 = discord.Embed(title="Fun commands", description="Below are the Fun commands:\n `eightball`, `hotcalc`")
+        e2 = discord.Embed(title="Fun commands", description="Below are the Fun commands:\n `8ball`, `hotcalc`,`cutecalc`")
     
         await ctx.respond(embed=e2)
         
     @help.command()
-    async def utlis(ctx):
+    async def utils(ctx):
     
         e2 = discord.Embed(title="Util commands", description="Below are the util commands:\n `suggest`, `serverinfo`,`userinfo`")
     
@@ -65,7 +65,6 @@ class helpcommand(commands.Cog):
 @bot.event
 async def on_ready():
     await status_change.start()
-    await bot.change_presence(status=discord.Status.idle, activity=discord.Game(name="BYRAMID"))
     print(f'Currently at {len(bot.guilds)} servers!')
     print('Servers connected to:')
     print('')
@@ -121,6 +120,8 @@ async def suggest(ctx):
     modal = Suggest_Modal(title="Create a new suggestion")
     await ctx.interaction.response.send_modal(modal)
 
+"""
+
 global sotd_embed
 sotd_embed = discord.Embed(title="Voting time", description="Various songs have been nominated. its time to vote!", color=discord.Color.random())
 
@@ -158,15 +159,26 @@ async def sotd(ctx):
 async def sotdsend(ctx):
     await ctx.send(embed=sotd_embed)
     
-
+"""
 @bot.slash_command(guild_ids=[918748880705839105])
 @commands.has_permissions(kick_members = True)
-async def warnuser(ctx, member: Option(discord.Member, "Member"), reason: Option(str, "reason")):
+async def warn(ctx, member: Option(discord.Member, "Member"), reason: Option(str, "reason")):
     await open_account(member)
 
     users = await get_user_data()
 
-    warns = await warn(member)
+    warns = await warn1(member)
+
+    await ctx.respond(f"<@{member.id}> warned with reason: **{reason}**. They now have {warns} warns.")
+
+@bot.slash_command(guild_ids=[918748880705839105])
+@commands.has_permissions(kick_members = True)
+async def unwarn(ctx, member: Option(discord.Member, "Member"), reason: Option(str, "reason")):
+    await open_account(member)
+
+    users = await get_user_data()
+
+    warns = await warn1(member, -1)
 
     await ctx.respond(f"<@{member.id}> warned with reason: **{reason}**. They now have {warns} warns.")
 
@@ -198,7 +210,7 @@ async def get_user_data():
         users = json.load(f)
     return users    
 
-async def warn(user, change = 1, mode = "warns"):
+async def warn1(user, change = 1, mode = "warns"):
     users = await get_user_data()
 
     users[str(user.id)][mode] += change

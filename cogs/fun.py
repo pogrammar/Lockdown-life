@@ -10,13 +10,13 @@ class Fun(commands.Cog):
     def __init__(self, bot):#to Initialise
         self.bot = bot
 
-    @slash_command(guild_ids=[918748880705839105])
+    @slash_command(guild_ids=[918748880705839105], name="8ball")
     async def eightball(self, ctx, question: Option(str)):
         ballresponse = [
             "Yes", "No", "Take a wild guess...", "Very doubtful",
             "Sure", "Without a doubt", "Most likely", "Might be possible",
             "You'll be the judge", "no... (╯°□°）╯︵ ┻━┻", "no... baka",
-            "senpai, pls no ;-;","i think....","gg","I-\ndont know what to say"
+            "senpai, pls no ;-;","i think....","gg","I-\ndont know what to say","oh well","My pogramming refuses to answer that question"
         ]
 
         answer = random.choice(ballresponse)
@@ -36,7 +36,24 @@ class Fun(commands.Cog):
         else:
             emoji = "💔"    
 
-        await ctx.respond(f"**{user.name}** is **{hot:.2f}%** hot {emoji}")            
+        await ctx.respond(f"**{user.name}** is **{hot:.2f}%** hot {emoji}")      
+
+    @slash_command(guild_ids=[918748880705839105])
+    async def cutecalc(self, ctx, user: Option(discord.Member)):    
+        r = random.randint(1, 100)
+        cute = r / 1.17
+
+        if cute > 75:
+            emoji = "😍"
+        elif cute > 50:
+            emoji = "😉"
+        elif cute > 25:
+            emoji = "🥸"
+        else:
+            emoji = "😶‍🌫️"    
+
+        await ctx.respond(f"**{user.name}** is **{cute:.2f}%** hot {emoji}")            
+
 
 def setup(bot):
     bot.add_cog(Fun(bot))        
