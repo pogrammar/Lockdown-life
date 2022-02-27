@@ -81,7 +81,7 @@ class Moderation(commands.Cog):
                    d: Option(str, "Option 4") = None,
                    e: Option(str, "Option 5") = None
                   ):
-        msg = ctx.interaction.original_message()
+        
 
         embed = discord.Embed(title="Poll time!", description=question)
         
@@ -101,8 +101,19 @@ class Moderation(commands.Cog):
         if e:
             embed.add_field(name=f"<:e_:920520686257205279>: {e}")
             await msg.add_reaction("<:e_:920520686257205279>")
-
+            
+            
         await ctx.respond(embed=embed)
+        msg = ctx.interaction.original_message()  
+        
+        
+        
+        if c:
+            await msg.add_reaction("<:c_:920520686328512532>")
+        if d:
+            await msg.add_reaction("<:d_:920520686248808458>")
+        if e:
+            await msg.add_reaction("<:e_:920520686257205279>")
         
     
     @slash_command(guild_ids=[918748880705839105], description="get deh mod app")
