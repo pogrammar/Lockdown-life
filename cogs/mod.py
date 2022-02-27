@@ -87,10 +87,10 @@ class Moderation(commands.Cog):
         
     
         embed.add_field(name=f"<:a_:920520686227845230>: {a}")
-        await msg.add_reaction("<:a_:920520686227845230>")
+        
         
         embed.add_field(name=f"<:b_:920520686278172742>: {b}")
-        await msg.add_reaction("<:b_:920520686278172742>")
+        
         
         if c:
             embed.add_field(name=f"<:c_:920520686328512532>", value=c)
@@ -102,6 +102,8 @@ class Moderation(commands.Cog):
             
         await ctx.respond(embed=embed)
         msg = ctx.interaction.original_message()  
+        await msg.add_reaction("<:a_:920520686227845230>")
+        await msg.add_reaction("<:b_:920520686278172742>")
         
         
         
