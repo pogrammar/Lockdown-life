@@ -93,11 +93,11 @@ class Moderation(commands.Cog):
         await msg.add_reaction("<:b_:920520686278172742>")
         
         if c:
-            embed.add_field(name=f"<:c_:920520686328512532>: {c}")
+            embed.add_field(name=f"<:c_:920520686328512532>", value=c)
         if d:
-            embed.add_field(name=f"<:d_:920520686248808458>: {d}") 
+            embed.add_field(name=f"<:d_:920520686248808458>", value=d) 
         if e:
-            embed.add_field(name=f"<:e_:920520686257205279>: {e}")
+            embed.add_field(name=f"<:e_:920520686257205279>", value=e)
             
             
         await ctx.respond(embed=embed)
