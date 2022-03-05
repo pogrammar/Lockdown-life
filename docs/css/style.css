@@ -8,12 +8,14 @@ body {
 }
 
 #site-header-div {
+    
     padding-top: 10px;
     background-color:#1F2833;
     
 }
 
 #site-header {
+    position: relative;
     font-family: 'Nanum Gothic', sans-serif;
     color: #66FCF1;
     font-size: 150px;
@@ -21,9 +23,10 @@ body {
 }
 
 #site-header-p {
+    
     font-family: 'Nanum Gothic', sans-serif;
     text-align: center;
-    top: 40%;
+    top: 40vh;
     border: 0;
     padding-left: 30%;
     padding-right: 30%;
@@ -33,13 +36,10 @@ body {
 
 }
 
-#site-navigator {
-    font-family: 'Nanum Gothic', sans-serif;
-    color: #66FCF1;
-    padding-left: 50px;
-    background-color: #1F2833;
-    background-image: url(.\assets\3-lines.png);
-    border-style: solid;
-    border-color: transparent;
 
+.bars-menu{
+    padding: 10px;
+    position: absolute;
+    height: 40px;
+    width: 30px;
 }
