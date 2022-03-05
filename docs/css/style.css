@@ -1,11 +1,37 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
 
 body {
-    font-family: 'Roboto Condensed', sans-serif;
+    
+    margin: 0;
+    border-width: 0;
+    padding: 0;
 }
 
 #site-header-div {
     padding-top: 10px;
     background-color:#1F2833;
+    
+}
+
+#site-header {
+    font-family: 'Roboto Condensed', sans-serif;
     color: #66FCF1;
+    font-size: 150px;
+    text-align: center;
+}
+
+#site-header-p {
+    padding-left: 30%;
+    font-family: 'Nanum Gothic', sans-serif;
+    color: #C5C6C7;
+    position: inherit;
+
+}
+
+#site-navigator {
+    font-family: 'Roboto Condensed', sans-serif;
+    color: #66FCF1;
+    padding-left: 50px;
+
 }
