@@ -111,10 +111,15 @@ body,html  {
   }
 
 
+
+
+
 .service-item {
   padding: 20px 0 20px 0;
   margin-bottom: 20px;
   cursor: pointer;
+  font-family: 'Smooch Sans', sans-serif;
+  transition: 1s;
 }
 
 .service-item-icon i {
@@ -127,9 +132,12 @@ body,html  {
   text-align: center;
 }
 
-.service-item:hover .service-item-icon i {
-  color: #fff;
-  background-color: #34c6d3;
+.service-item:hover{
+  background-color: #1f2833;
+  box-shadow: 10px;
+  opacity: 2;
+  transition: 1s;
+  color: #C5C6C7;
 }
 
 .service-item-title h3 {
@@ -152,6 +160,7 @@ body,html  {
   font-weight: 700;
   text-align: center;
   margin: 0 0 30px 0;
+  font-family: 'Smooch Sans', sans-serif;
 }
 
 .content-title-white h3 {
@@ -179,4 +188,14 @@ body,html  {
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
+}
+
+#polls-icon {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+}
+
+.polls-title {
+  padding-left: 10px;
 }
