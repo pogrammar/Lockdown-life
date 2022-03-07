@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Smooch+Sans&display=swap'); /* the thinner one: font-family: 'Smooch Sans', sans-serif; */
+@import url('https://fonts.googleapis.com/css2?family=Smooch+Sans:wght@600&display=swap'); /* the thicker :  font-family: 'Smooch Sans', sans-serif; */
 
 body {
     
@@ -8,7 +9,6 @@ body {
 }
 
 #site-header-div {
-    
     padding-top: 10px;
     background-color:#1F2833;
     
@@ -17,7 +17,7 @@ body {
 #site-header {
     position: relative;
     padding-top: 150px;
-    font-family: 'Nanum Gothic', sans-serif;
+    font-family: 'Smooch Sans', sans-serif;
     color: #66FCF1;
     font-size: 150px;
     text-align: center;
@@ -25,7 +25,7 @@ body {
 
 #site-header-p {
     
-    font-family: 'Nanum Gothic', sans-serif;
+    font-family: 'Smooch Sans', sans-serif;
     text-align: center;
     border: 0;
     padding-left: 30%;
@@ -46,7 +46,7 @@ body {
 
 #site-header-about-button {
     padding: 10px 10px 10px 10px;
-    font-family: 'Nanum Gothic', sans-serif;
+    font-family: 'Smooch Sans', sans-serif;
     border-style: solid;
     border-color: #66FCF1;
     color: white;
@@ -109,3 +109,23 @@ body,html  {
     10% { transform: translateY(0); opacity: 1; }
     100% { transform: translateY(15px); opacity: 0;}
   }
+
+
+#services-header {
+  font-family: 'Smooch Sans', sans-serif;
+  font-size: 30px;
+  text-align: center;
+  text-decoration: underline;
+  text-decoration-color: #66FCF1;
+  padding: 30px;
+  
+  
+}
+
+#services-box-polls-img {
+  width: 40px;
+  height: 40px;
+}
+#services-box-polls {
+  padding-left: 200px;
+}
