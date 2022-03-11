@@ -12,7 +12,6 @@ import asyncio
 import json
 import os
 from typing import List
-from antispam import AntiSpamHandler
 
 
 
@@ -25,15 +24,6 @@ bot = commands.Bot(command_prefix='~',
                    status=discord.Status.dnd, 
                    owner_id=734641452214124674,
                   )
-
-bot.handler = AntiSpamHandler(bot)
-antispam.AntiSpamHandler.add_ignored_item(ignored_channels(set[922357478467973150])) 
-
-@bot.event
-async def on_message(message):
-    await bot.handler.propagate(message)
-    await bot.process_commands(message)
-
 
 for filename in os.listdir("./cogs"):# for every file in a folder in cogs
     if filename.endswith('.py'): #if the file is a python file and if the file is a cog
