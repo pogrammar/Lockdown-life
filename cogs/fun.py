@@ -52,7 +52,7 @@ class Fun(commands.Cog):
         else:
             emoji = "😶‍🌫️"    
 
-        await ctx.respond(f"**{user.name}** is **{cute:.2f}%** hot {emoji}")            
+        await ctx.respond(f"**{user.name}** is **{cute:.2f}%** cute {emoji}")            
 
 
 def setup(bot):
