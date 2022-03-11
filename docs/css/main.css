@@ -277,3 +277,10 @@ body,html  {
   border-radius: 0;
   display: none;
 }
+
+
+nav {
+  background-color: #1F2833;
+  transition: top 0.3s;
+
+}  
