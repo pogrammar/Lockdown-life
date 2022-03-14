@@ -228,5 +228,30 @@ async def warn1(user, change = 1, mode = "warns"):
     return warns
     
 
+
+class Report_Modal(Modal):
+    def __init__(self, *args, **kwargs) -> None:
+        super().__init__(*args, **kwargs)
+        self.add_item(InputText(label="Suggestion title", placeholder="Suggestion title"))
+
+        self.add_item(InputText(label="Suggestion", placeholder="Suggestion", style=discord.InputTextStyle.long))
+
+    async def callback(self, interaction: discord.Interaction):
+        embed = discord.Embed(title=f"New suggestion: {self.children[0].value}", description=self.children[1].value, color=discord.Color.random())      
+        user = 734641452214124674
+        member = await bot.fetch_user(user)
+        await member.send(embed=embed)
+        await interaction.response.send_message("Suggestion sent!")
+        
+    
+@bot.slash_command(guild_ids=[918748880705839105], description="Report a member to betches.py")
+async def report(ctx):
+    modal = Report_Modal(title="Report a member")
+    await ctx.interaction.response.send_modal(modal)
+
+
+
+
+
 TOKEN = os.getenv("TOKEN")
 bot.run(TOKEN)
