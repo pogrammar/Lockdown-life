@@ -60,7 +60,7 @@ class helpcommand(commands.Cog):
     @help.command()
     async def utils(ctx):
     
-        e2 = discord.Embed(title="Util commands", description="Below are the util commands:\n `suggest`, `serverinfo`,`userinfo`")
+        e2 = discord.Embed(title="Util commands", description="Below are the util commands:\n `suggest`, `serverinfo`,`userinfo`,`report`")
     
         await ctx.respond(embed=e2)
 
