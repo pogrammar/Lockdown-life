@@ -77,10 +77,27 @@ async def on_ready():
                 application_id=951058073387171870, 
                 state="Made by betches.py", 
                 details="Watching Lockdown life", 
-                party = {"id" : "ae488379-351d-4a4f-ad32-2b9b01c91657","size" : 69},
-                assets = {"large_image" : "largeimage","large_text" : "Lockdown life","small_image" : "pfp-png","small_text" : "By betches.py#2117"},
-                buttons=[{"label" : "Github repository", "url" : "https://github.com/pogrammar/Lockdown-life"},{"label" : "Website (Under development)","url" : "https://pogrammar.github.io/dopefolio/"}], 
-                timestamps = {"start" : "1507665886"}))
+                assets = {
+                    "large_image" : "largeimage",
+                    "large_text" : "Lockdown life",
+                    "small_image" : "pfp-png",
+                    "small_text" : "By betches.py#2117"
+                },
+                buttons=[
+                    {
+                        "label" : "Github repository",
+                        "url" : "https://github.com/pogrammar/Lockdown-life"
+                    },
+                    {
+                        "label" : "Website (Under development)",
+                        "url" : "https://pogrammar.github.io/dopefolio/"
+                    }
+                ], 
+                timestamps = {
+                    "start" : "1507665886"
+                },
+            )
+        )
     
 
     
