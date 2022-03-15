@@ -352,6 +352,21 @@ class ButtonRoleCog(commands.Cog):
 
         await ctx.respond(embed=embed, view=view)
 
+    @slash_command(guild_ids=[918748880705839105], description="Get the gender roles")
+    async def rolesgender(self, ctx: commands.Context):
+        embed = discord.Embed(title="Choose your age", description="<@&953386730357141575>\n<@&953386719628128276>\n<@&953386828914892890>")
+
+        view = discord.ui.View(timeout=None)
+
+        # Loop through the list of roles and add a new button to the view for each role.
+        for role_id in gender_role_ids:
+            # Get the role from the guild by ID.
+            role = ctx.guild.get_role(role_id)
+            view.add_item(RoleButtonGender(role))
+
+        await ctx.respond(embed=embed, view=view)    
+
+
     @slash_command(guild_ids=[918748880705839105], description="Get the ping roles")
     async def rolesping(self, ctx: commands.Context):
         """Slash command to post a new view with a button for each role."""
@@ -427,21 +442,7 @@ class ButtonRoleCog(commands.Cog):
 
         await ctx.respond("Dont shout at betches on pings now <:EEEEEEEE:948472349286621286>", view=view)    
 
-    @slash_command(guild_ids=[918748880705839105], description="Get the gender roles")
-    async def rolesgender(self, ctx: commands.Context):
-        """Slash command to post a new view with a button for each role."""
-
-        # timeout is None because we want this view to be persistent.
-        view = discord.ui.View(timeout=None)
-
-        # Loop through the list of roles and add a new button to the view for each role.
-        for role_id in gender_role_ids:
-            # Get the role from the guild by ID.
-            role = ctx.guild.get_role(role_id)
-            view.add_item(RoleButtonGender(role))
-
-        await ctx.respond("Choose your gender pronouns", view=view)    
-
+    
 
 
 
