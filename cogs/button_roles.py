@@ -430,9 +430,6 @@ class ButtonRoleCog(commands.Cog):
     @slash_command(guild_ids=[918748880705839105], description="Get the red color roles")
     async def rolesred(self, ctx: commands.Context):
         """Slash command to post a new view with a button for each role."""
-        embed = discord.Embed(title="Choose your red", description=f"<@&919603666963542057>\n<@&919606070224224396>\n<@&919606098238013470>\n<@&919606112423116880>")
-
-
         # timeout is None because we want this view to be persistent.
         view = discord.ui.View(timeout=None)
 
@@ -442,7 +439,7 @@ class ButtonRoleCog(commands.Cog):
             role = ctx.guild.get_role(role_id)
             view.add_item(RoleButtonRed(role))
 
-        await ctx.respond(embed=embed, view=view)        
+        await ctx.respond("**Choose your red**\n\n<@&919603666963542057>\n<@&919606070224224396>\n<@&919606098238013470>\n<@&919606112423116880>", view=view)        
 
 
 
