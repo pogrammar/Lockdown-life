@@ -26,46 +26,16 @@ bot = commands.Bot(command_prefix='~',
                    owner_id=734641452214124674,
                   )
 
+
+
+
+
 for filename in os.listdir("./cogs"):# for every file in a folder in cogs
     if filename.endswith('.py'): #if the file is a python file and if the file is a cog
         bot.load_extension(f'cogs.{filename[:-3]}')#load the extension"
 
 # statuses = cycle(["With the API", "Suggest with /suggest!", "/help", "pycord", "With discord imput forms", "Check out my github repo!","/report",])
 
-@tasks.loop(seconds=5.0)
-async def status_change():
-    # await bot.change_presence(status=discord.Status.idle, activity=discord.Game(name=next(statuses)))
-    await bot.change_presence(
-        status=discord.Status.idle, 
-        activity=discord.Game(
-            name="with Baby Yoda", 
-            application_id="951058073387171870", 
-            state="Made by betches.py", 
-            details="Watching Lockdown life", 
-            party = {
-                "id" : "ae488379-351d-4a4f-ad32-2b9b01c91657",
-                "size" : "69"
-            },
-            assets = {
-                "large_image" : "largeimage",
-                "large_text" : "Lockdown life",
-                "small_image" : "pfp-png",
-                "small_text" : "By betches.py#2117"
-            },
-            buttons=[
-                {
-                   "label" : "Github repository",
-                   "url" : "https://github.com/pogrammar/Lockdown-life"
-                },
-                {
-                   "label" : "Website (Under development)",
-                   "url" : ""
-                }
-            ],
-            timestamps = {
-                "start" : "1507665886"
-            }
-        ))
 
 help = SlashCommandGroup(name="help", description="get information on my commands", guild_ids=[918748880705839105])      
 
@@ -99,12 +69,37 @@ class helpcommand(commands.Cog):
 
 @bot.event
 async def on_ready():
-    await status_change.start()
-    print(f'Currently at {len(bot.guilds)} servers!')
-    print('Servers connected to:')
-    print('')
-    for server in bot.guilds:
-        print(server.name)
+        await bot.change_presence(
+        status=discord.Status.idle, 
+        activity=discord.Game(
+            name="with Baby Yoda", 
+            application_id="951058073387171870", 
+            state="Made by betches.py", 
+            details="Watching Lockdown life", 
+            party = {
+                "id" : "ae488379-351d-4a4f-ad32-2b9b01c91657",
+                "size" : "69"
+            },
+            assets = {
+                "large_image" : "largeimage",
+                "large_text" : "Lockdown life",
+                "small_image" : "pfp-png",
+                "small_text" : "By betches.py#2117"
+            },
+            buttons=[
+                {
+                   "label" : "Github repository",
+                   "url" : "https://github.com/pogrammar/Lockdown-life"
+                },
+                {
+                   "label" : "Website (Under development)",
+                   "url" : ""
+                }
+            ],
+            timestamps = {
+                "start" : "1507665886"
+            }
+        ))
     
 
     
