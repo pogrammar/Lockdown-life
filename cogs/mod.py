@@ -72,47 +72,13 @@ class Moderation(commands.Cog):
 
 
     @slash_command(guild_ids=[918748880705839105])
-    async def poll(self, 
-                   ctx, 
-                   question: Option(str, "Question"), 
-                   a: Option(str, "Option 1"), 
-                   b: Option(str, "Option 2"),
-                   c: Option(str, "Option 3") = None,
-                   d: Option(str, "Option 4") = None,
-                   e: Option(str, "Option 5") = None
-                  ):
-        
+    async def poll(self, ctx, question: Option(str, "Question"), a: Option(str, "Option 1"), b: Option(str, "Option 2")):
 
-        embed = discord.Embed(title="Poll time!", description=question)
-        
-    
-        embed.add_field(name=f"<:a_:920520686227845230>: {a}")
-        
-        
-        embed.add_field(name=f"<:b_:920520686278172742>: {b}")
-        
-        
-        if c:
-            embed.add_field(name=f"<:c_:920520686328512532>", value=c)
-        if d:
-            embed.add_field(name=f"<:d_:920520686248808458>", value=d) 
-        if e:
-            embed.add_field(name=f"<:e_:920520686257205279>", value=e)
-            
-            
+        embed = discord.Embed(title=question, description=f"<:a_:920520686227845230>: {a}\n <:b_:920520686278172742>: {b}")
         await ctx.respond(embed=embed)
-        msg = ctx.interaction.original_message()  
-        await msg.add_reaction("<:a_:920520686227845230>")
-        await msg.add_reaction("<:b_:920520686278172742>")
-        
-        
-        
-        if c:
-            await msg.add_reaction("<:c_:920520686328512532>")
-        if d:
-            await msg.add_reaction("<:d_:920520686248808458>")
-        if e:
-            await msg.add_reaction("<:e_:920520686257205279>")
+        msg = await ctx.interaction.original_message()
+        await msg.add_reaction('<:a_:920520686227845230>')
+        await msg.add_reaction('<:b_:920520686278172742>')
         
     
     @slash_command(guild_ids=[918748880705839105], description="get deh mod app")
