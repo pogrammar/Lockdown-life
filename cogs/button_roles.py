@@ -91,7 +91,7 @@ class RoleButtonPing(discord.ui.Button):
 
 #--------------------------------------------Suggestion Roles---------------------------------------------------------------------------
  
-suggestion_role_ids = [919969168789504011, 919968883757158431, 919968808700104744]
+suggestion_role_ids = [920715519710076948, 920715698739757127]
 class RoleButtonSuggestion(discord.ui.Button):
     def __init__(self, role: discord.Role):
         """
@@ -402,33 +402,27 @@ class ButtonRoleCog(commands.Cog):
 
     @slash_command(guild_ids=[918748880705839105], description="Get the indian roles")
     async def rolesindian(self, ctx: commands.Context):
-        """Slash command to post a new view with a button for each role."""
+        embed = discord.Embed(title="Are you indian? choose this for festive roles <:pepeHmmm:919825231965720586>", description="<@&931778093977313320>")
 
-        # timeout is None because we want this view to be persistent.
         view = discord.ui.View(timeout=None)
 
-        # Loop through the list of roles and add a new button to the view for each role.
         for role_id in indian_role_ids:
-            # Get the role from the guild by ID.
             role = ctx.guild.get_role(role_id)
             view.add_item(RoleButtonIndian(role))
 
-        await ctx.respond("Are you indian? choose this for festive roles <:pepeHmmm:919825231965720586>", view=view)
+        await ctx.respond(embed=embed, view=view)
 
     @slash_command(guild_ids=[918748880705839105], description="Get the bot roles")
     async def rolesbot(self, ctx: commands.Context):
-        """Slash command to post a new view with a button for each role."""
+        embed = discord.Embed(title="Dont shout at betches on pings now <:EEEEEEEE:948472349286621286>", description="<@&945965479816744961>")
 
-        # timeout is None because we want this view to be persistent.
         view = discord.ui.View(timeout=None)
 
-        # Loop through the list of roles and add a new button to the view for each role.
         for role_id in bot_role_ids:
-            # Get the role from the guild by ID.
             role = ctx.guild.get_role(role_id)
             view.add_item(RoleButtonBot(role))
 
-        await ctx.respond("Dont shout at betches on pings now <:EEEEEEEE:948472349286621286>", view=view)    
+        await ctx.respond(embed=embed, view=view)    
 
     
 
