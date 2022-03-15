@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=Smooch+Sans&display=swap'); /* the thinner one: font-family: 'Smooch Sans', sans-serif; */
+@import url('https://fonts.googleapis.com/css2?family=Smooch+Sans:wght@600&display=swap'); /* the thicker :  font-family: 'Smooch Sans', sans-serif; */
+
+body {
+    
+    margin: 0;
+    border-width: 0;
+    padding: 0;
+}
+
+#site-header-div {
+    padding-top: 10px;
+    
+}
+
+#home-cover {
+    height: 100%;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),url("../assets/banner.jpg"); 
+    background-repeat: no-repeat;
+  }
+
+
+#site-header {
+    position: relative;
+    padding-top: 50px;
+    font-family: 'Smooch Sans', sans-serif;
+    color: #66FCF1;
+    font-size: 150px;
+    text-align: center;
+}
+
+#site-header-p {
+    
+    font-family: 'Smooch Sans', sans-serif;
+    text-align: center;
+    border: 0;
+    padding-left: 30%;
+    padding-right: 30%;
+    color: #C5C6C7;
+    position: relative;
+    
+
+}
+
+
+.bars-menu{
+    padding: 10px;
+    position: absolute;
+    height: 40px;
+    width: 30px;
+}
+
+#site-header-about-button {
+    padding: 10px 10px 10px 10px;
+    font-family: 'Smooch Sans', sans-serif;
+    border-style: solid;
+    border-color: #66FCF1;
+    color: white;
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+    transition: 1s;
+    
+}
+
+#site-header-about-button:hover {
+    text-decoration: none;
+    opacity: 2;
+    transition: 1s;
+    border-color: white;
+    color: #66FCF1;
+    box-shadow: 5px 10px;
+
+}
+
+.bg-parallax {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+  }
+  
+
+body,html  {
+    background-color: #000;
+    width: 100%;
+    min-height: 100%;
+    padding: 0;
+    margin: 0;
+  }
+  .scroll-downs {
+    position: relative;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    
+    width :34px;
+    height: 55px;
+  }
+  .mousey {
+    width: 3px;
+    padding: 5px 15px;
+    height: 35px;
+    border: 2px solid #fff;
+    border-radius: 25px;
+    opacity: 0.75;
+    box-sizing: content-box;
+  }
+  .scroller {
+    width: 3px;
+    height: 10px;
+    border-radius: 25%;
+    background-color: #fff;
+    animation-name: scroll;
+    animation-duration: 2.2s;
+    animation-timing-function: cubic-bezier(.15,.41,.69,.94);
+    animation-iteration-count: infinite;
+  }
+  @keyframes scroll {
+    0% { opacity: 0; }
+    10% { transform: translateY(0); opacity: 1; }
+    100% { transform: translateY(15px); opacity: 0;}
+  }
