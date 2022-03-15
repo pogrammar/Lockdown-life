@@ -73,6 +73,7 @@ async def on_ready():
             status=discord.Status.idle, 
             activity=discord.Game(
                 name="with Baby Yoda", 
+                type=discord.ActivityType.watching
                 application_id=951058073387171870, 
                 state="Made by betches.py", 
                 details="Watching Lockdown life", 
