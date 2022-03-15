@@ -390,18 +390,15 @@ class ButtonRoleCog(commands.Cog):
 
     @slash_command(guild_ids=[918748880705839105], description="Get the anime roles")
     async def rolesanime(self, ctx: commands.Context):
-        embed = discord.Embed(title="Choose your gender", description="<@&919969168789504011>\n<@&919968883757158431>\n<@&919968808700104744>")
+        embed = discord.Embed(title="Choose if you like anime", description="<@&929615457609191473>")
 
-        # timeout is None because we want this view to be persistent.
         view = discord.ui.View(timeout=None)
 
-        # Loop through the list of roles and add a new button to the view for each role.
         for role_id in anime_role_ids:
-            # Get the role from the guild by ID.
             role = ctx.guild.get_role(role_id)
             view.add_item(RoleButtonAnime(role))
 
-        await ctx.respond("Do you like anime? choose this role for anime pings for updates.", view=view)
+        await ctx.respond(embed=embed, view=view)
 
     @slash_command(guild_ids=[918748880705839105], description="Get the indian roles")
     async def rolesindian(self, ctx: commands.Context):
