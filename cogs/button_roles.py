@@ -2,7 +2,6 @@ from turtle import title
 import discord
 from discord.commands.core import slash_command
 from discord.ext import commands
-from discord.utils import get
 
 
 #--------------------------------------------AGE ROLES---------------------------------------------------------------------------
@@ -431,7 +430,7 @@ class ButtonRoleCog(commands.Cog):
     @slash_command(guild_ids=[918748880705839105], description="Get the red color roles")
     async def rolesred(self, ctx: commands.Context):
         """Slash command to post a new view with a button for each role."""
-        embed = discord.Embed(title="Choose your red", description=f"<@&919603666963542057>\n<@&919606070224224396>\n<@&919606098238013470>\n<@&919606112423116880> ")
+        embed = discord.Embed(title="Choose your red", description=f"<@&919603666963542057>\n<@&919606070224224396>\n<@&919606098238013470>\n<@&919606112423116880>")
 
 
         # timeout is None because we want this view to be persistent.
@@ -478,7 +477,10 @@ class ButtonRoleCog(commands.Cog):
             view.add_item(RoleButtonAge(role))
         for role_id in suggestion_role_ids:
             role = guild.get_role(role_id)
-            view.add_item(RoleButtonSuggestion(role))            
+            view.add_item(RoleButtonSuggestion(role))
+        for role_id in red_role_ids:
+            role = guild.get_role(role_id)
+            view.add_item(RoleButtonRed(role))                 
 
         # Add the view to the bot so it will watch for button interactions.
         self.bot.add_view(view)
