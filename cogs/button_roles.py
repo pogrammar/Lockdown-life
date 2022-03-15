@@ -354,8 +354,7 @@ class ButtonRoleCog(commands.Cog):
 
     @slash_command(guild_ids=[918748880705839105], description="Get the gender roles")
     async def rolesgender(self, ctx: commands.Context):
-        embed = discord.Embed(title="Choose your gender", description="<@&919969168789504011>\n<@&919968883757158431>\n<@&919968808700104744>")
-
+        embed = discord.Embed(title="Choose your ping roles", description="<@&953386730357141575>\n<@&953386719628128276>\n<@&953386828914892890>")
         view = discord.ui.View(timeout=None)
 
 
@@ -368,7 +367,7 @@ class ButtonRoleCog(commands.Cog):
 
     @slash_command(guild_ids=[918748880705839105], description="Get the ping roles")
     async def rolesping(self, ctx: commands.Context):
-        embed = discord.Embed(title="Choose your ping roles", description="<@&953386730357141575>\n<@&953386719628128276>\n<@&953386828914892890>")
+        embed = discord.Embed(title="Choose your gender", description="<@&919969168789504011>\n<@&919968883757158431>\n<@&919968808700104744>")
         view = discord.ui.View(timeout=None)
 
         for role_id in ping_role_ids:
@@ -379,18 +378,15 @@ class ButtonRoleCog(commands.Cog):
 
     @slash_command(guild_ids=[918748880705839105], description="Get the suggestion roles")
     async def rolessuggestion(self, ctx: commands.Context):
-        """Slash command to post a new view with a button for each role."""
+        embed = discord.Embed(title="Choose your advisory method", description="<@&920715519710076948>\n<@&920715698739757127>")
 
-        # timeout is None because we want this view to be persistent.
         view = discord.ui.View(timeout=None)
 
-        # Loop through the list of roles and add a new button to the view for each role.
         for role_id in suggestion_role_ids:
-            # Get the role from the guild by ID.
             role = ctx.guild.get_role(role_id)
             view.add_item(RoleButtonSuggestion(role))
 
-        await ctx.respond("Choose your avisory method", view=view) 
+        await ctx.respond(embed=embed, view=view) 
 
     @slash_command(guild_ids=[918748880705839105], description="Get the anime roles")
     async def rolesanime(self, ctx: commands.Context):
