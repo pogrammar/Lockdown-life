@@ -1,4 +1,4 @@
-from sre_parse import State
+
 import discord
 from discord.ext import commands, tasks
 from discord.ui import *
@@ -73,7 +73,7 @@ async def on_ready():
             status=discord.Status.idle, 
             activity=discord.Game(
                 name="with Baby Yoda", 
-                type=discord.ActivityType.watching
+                type=discord.ActivityType.watching,
                 application_id=951058073387171870, 
                 state="Made by betches.py", 
                 details="Watching Lockdown life", 
