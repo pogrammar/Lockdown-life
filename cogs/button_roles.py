@@ -1,8 +1,6 @@
-from turtle import title
 import discord
 from discord.commands.core import slash_command
 from discord.ext import commands
-
 
 #--------------------------------------------AGE ROLES---------------------------------------------------------------------------
 age_role_ids = [919921179769331712, 919921261721833524, 919921343452045352]
@@ -268,7 +266,20 @@ class RoleButtonBot(discord.ui.Button):
 
 
 
-#-------------------------------------Red Roles-------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -370,7 +381,8 @@ class ButtonRoleCog(commands.Cog):
             role = ctx.guild.get_role(role_id)
             view.add_item(RoleButtonBot(role))
 
-        await ctx.respond("Dont shout at betches on pings now <:EEEEEEEE:948472349286621286>", view=view)
+        await ctx.respond("Dont shout at betches on pings now <:EEEEEEEE:948472349286621286>", view=view)    
+
 
 
 
@@ -383,28 +395,14 @@ class ButtonRoleCog(commands.Cog):
         If a view was already created before (with the same custom IDs for buttons)
         it will be loaded and the bot will start watching for button clicks again.
         """
-        # We recreate the view as we did in the /roles commands.
+        # We recreate the view as we did in the /post command.
         view = discord.ui.View(timeout=None)
         # Make sure to set the guild ID here to whatever server you want the buttons in!
         guild = self.bot.get_guild(918748880705839105)
-        for role_id in ping_role_ids:
-            role = guild.get_role(role_id)
-            view.add_item(RoleButtonPing(role))
-        for role_id in anime_role_ids:
-            role = guild.get_role(role_id)
-            view.add_item(RoleButtonAnime(role))
-        for role_id in indian_role_ids:
-            role = guild.get_role(role_id)
-            view.add_item(RoleButtonIndian(role))
-        for role_id in bot_role_ids:
-            role = guild.get_role(role_id)
-            view.add_item(RoleButtonBot(role))
         for role_id in age_role_ids:
             role = guild.get_role(role_id)
             view.add_item(RoleButtonAge(role))
-        for role_id in suggestion_role_ids:
-            role = guild.get_role(role_id)
-            view.add_item(RoleButtonSuggestion(role))
+
         # Add the view to the bot so it will watch for button interactions.
         self.bot.add_view(view)
 
