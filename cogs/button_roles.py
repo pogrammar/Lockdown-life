@@ -354,7 +354,7 @@ class ButtonRoleCog(commands.Cog):
 
     @slash_command(guild_ids=[918748880705839105], description="Get the gender roles")
     async def rolesgender(self, ctx: commands.Context):
-        embed = discord.Embed(title="Choose your age", description="<@&919969168789504011>\n<@&919968883757158431>\n<@&919968808700104744>")
+        embed = discord.Embed(title="Choose your gender", description="<@&919969168789504011>\n<@&919968883757158431>\n<@&919968808700104744>")
 
         view = discord.ui.View(timeout=None)
 
@@ -368,7 +368,7 @@ class ButtonRoleCog(commands.Cog):
 
     @slash_command(guild_ids=[918748880705839105], description="Get the ping roles")
     async def rolesping(self, ctx: commands.Context):
-        embed = discord.Embed(title="Choose your age", description="<@&953386730357141575>\n<@&953386719628128276>\n<@&953386828914892890>")
+        embed = discord.Embed(title="Choose your ping roles", description="<@&953386730357141575>\n<@&953386719628128276>\n<@&953386828914892890>")
         view = discord.ui.View(timeout=None)
 
         for role_id in ping_role_ids:
