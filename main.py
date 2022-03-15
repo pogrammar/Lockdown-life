@@ -63,6 +63,12 @@ class helpcommand(commands.Cog):
         e2 = discord.Embed(title="Util commands", description="Below are the util commands:\n `suggest`, `serverinfo`,`userinfo`,`report`")
     
         await ctx.respond(embed=e2)
+    @help.command()
+    async def roles(ctx):
+    
+        e2 = discord.Embed(title="role commands", description="Below are the role commands:\n `rolesage`, `rolesping`")
+    
+        await ctx.respond(embed=e2)    
 
     bot.add_application_command(help)   
 
