@@ -339,6 +339,8 @@ class ButtonRoleCog(commands.Cog):
     async def rolesage(self, ctx: commands.Context):
         """Slash command to post a new view with a button for each role."""
 
+        embed = discord.Embed(title="Choose your age", description="<@&919921179769331712>\n<@&919921261721833524>\n<@&919921343452045352>")
+
         # timeout is None because we want this view to be persistent.
         view = discord.ui.View(timeout=None)
 
@@ -348,7 +350,7 @@ class ButtonRoleCog(commands.Cog):
             role = ctx.guild.get_role(role_id)
             view.add_item(RoleButtonAge(role))
 
-        await ctx.respond("Choose your age group", view=view)
+        await ctx.respond(embed=embed, view=view)
 
     @slash_command(guild_ids=[918748880705839105], description="Get the ping roles")
     async def rolesping(self, ctx: commands.Context):
