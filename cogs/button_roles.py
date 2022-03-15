@@ -85,7 +85,7 @@ class ButtonRoleCog(commands.Cog):
         self.bot = bot
 
     # Make sure to provide a list of guild ids in the guild_ids kwarg argument.
-    @slash_command(guild_ids=[...], description="Post the button role message")
+    @slash_command(guild_ids=[918748880705839105], description="Post the button role message")
     async def ageroles(self, ctx: commands.Context):
         """Slash command to post a new view with a button for each role."""
 
