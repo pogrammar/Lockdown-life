@@ -360,7 +360,6 @@ class ButtonRoleCog(commands.Cog):
 
 
         for role_id in gender_role_ids:
-            # Get the role from the guild by ID.
             role = ctx.guild.get_role(role_id)
             view.add_item(RoleButtonGender(role))
 
@@ -369,16 +368,14 @@ class ButtonRoleCog(commands.Cog):
 
     @slash_command(guild_ids=[918748880705839105], description="Get the ping roles")
     async def rolesping(self, ctx: commands.Context):
-        embed = discord.Embed(title="Choose your age", description="<@&919969168789504011>\n<@&919968883757158431>\n<@&919968808700104744>")
+        embed = discord.Embed(title="Choose your age", description="<@&953386730357141575>\n<@&953386719628128276>\n<@&953386828914892890>")
         view = discord.ui.View(timeout=None)
 
-        # Loop through the list of roles and add a new button to the view for each role.
         for role_id in ping_role_ids:
-            # Get the role from the guild by ID.
             role = ctx.guild.get_role(role_id)
             view.add_item(RoleButtonPing(role))
 
-        await ctx.respond("Choose your ping frequency", view=view)
+        await ctx.respond(embed=embed, view=view)
 
     @slash_command(guild_ids=[918748880705839105], description="Get the suggestion roles")
     async def rolessuggestion(self, ctx: commands.Context):
