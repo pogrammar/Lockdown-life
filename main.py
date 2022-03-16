@@ -78,30 +78,7 @@ async def on_ready():
         await bot.change_presence(
             status=discord.Status.idle, 
             activity=discord.Game(
-                name="with Baby Yoda", 
-                type=discord.ActivityType.watching,
-                application_id=951058073387171870, 
-                state="Made by betches.py", 
-                details="Watching Lockdown life", 
-                assets = {
-                    "large_image" : "largeimage",
-                    "large_text" : "Lockdown life",
-                    "small_image" : "pfp-png",
-                    "small_text" : "By betches.py#2117"
-                },
-                buttons=[
-                    {
-                        "label" : "Github repository",
-                        "url" : "https://github.com/pogrammar/Lockdown-life"
-                    },
-                    {
-                        "label" : "Website (Under development)",
-                        "url" : "https://pogrammar.github.io/dopefolio/"
-                    }
-                ], 
-                timestamps = {
-                    "start" : "1507665886"
-                },
+                name="with baby Yoda",
             )
         )
     
