@@ -81,10 +81,7 @@ class InteractiveView(discord.ui.View):
 
     @discord.ui.button(style=discord.ButtonStyle.green, label="=", row=3)
     async def equal(self, button: discord.ui.Button, interaction: discord.Interaction):
-        try:
-            self.expr = await self.calc.calculate(self.expr)
-        except errors.BadArgument: # if you are function only, change this to BadArgument
-            return await interaction.response.send_message("Um, looks like you provided a wrong expression....")
+        self.expr = await self.calc.calculate(self.expr)
         await interaction.message.edit(content=f"```\n{self.expr}\n```")
 
     @discord.ui.button(style=discord.ButtonStyle.green, label="-", row=3)
