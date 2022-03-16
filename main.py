@@ -4,7 +4,7 @@ from discord.ext import commands, tasks
 from discord.ui import *
 from itertools import cycle
 from discord.commands import Option
-from discord import utils
+from discord import Activity, utils
 from discord.commands import SlashCommandGroup
 import datetime
 from datetime import datetime, timedelta
@@ -22,6 +22,7 @@ from typing import List
 bot = commands.Bot(command_prefix='~', 
                    help_command=None, 
                    intents = discord.Intents.all(), 
+                   activity=discord.Game("Starting up..."),
                    status=discord.Status.dnd, 
                    owner_id=734641452214124674,
                   )
