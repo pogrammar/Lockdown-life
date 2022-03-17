@@ -473,7 +473,7 @@ class ButtonRoleCog(commands.Cog):
 
         view = discord.ui.View(timeout=None)
 
-        for role_id in bot_role_ids:
+        for role_id in game_role_ids:
             role = ctx.guild.get_role(role_id)
             view.add_item(RoleButtonGame(role))
 
