@@ -349,7 +349,7 @@ class RoleButtonGame(discord.ui.Button):
             await user.remove_roles(role)
             await interaction.response.send_message(
                 f"❌ The {role.mention} role has been taken from you", ephemeral=True
-            )            
+            )           
 
 
 
