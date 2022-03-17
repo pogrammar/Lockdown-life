@@ -349,8 +349,7 @@ class RoleButtonGame(discord.ui.Button):
             await user.remove_roles(role)
             await interaction.response.send_message(
                 f"❌ The {role.mention} role has been taken from you", ephemeral=True
-            )           
-
+            )            
 
 
 
@@ -467,9 +466,9 @@ class ButtonRoleCog(commands.Cog):
 
         await ctx.respond(embed=embed, view=view)
 
-    @slash_command(guild_ids=[918748880705839105], description="Get the game roles")
+    @slash_command(guild_ids=[918748880705839105], description="Get the bot roles")
     async def rolesgame(self, ctx: commands.Context):
-        embed = discord.Embed(title="What are your favourite games?", description="<@&954080200239480833>\n<@&952950149678780486>\n<@&954080196951146516>")
+        embed = discord.Embed(title="what are your favourite games?", description="<@&954080200239480833>\n<@&952950149678780486>\n<@&954080196951146516>")
 
         view = discord.ui.View(timeout=None)
 
@@ -477,7 +476,8 @@ class ButtonRoleCog(commands.Cog):
             role = ctx.guild.get_role(role_id)
             view.add_item(RoleButtonGame(role))
 
-        await ctx.respond(embed=embed, view=view)    
+        await ctx.respond(embed=embed, view=view)
+
 
 
     
@@ -519,7 +519,8 @@ class ButtonRoleCog(commands.Cog):
             view.add_item(RoleButtonGender(role))
         for role_id in game_role_ids:
             role = guild.get_role(role_id)
-            view.add_item(RoleButtonGame(role))    
+            view.add_item(RoleButtonGame(role))
+        
 
         # Add the view to the bot so it will watch for button interactions.
         self.bot.add_view(view)
