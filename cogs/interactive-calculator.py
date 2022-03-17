@@ -1,3 +1,5 @@
+"""""
+
 from simpcalc import simpcalc
 import discord
 from discord.ext import commands
@@ -121,3 +123,6 @@ class Calculator(commands.Cog):
 
 def setup(bot):
     bot.add_cog(Calculator(bot))
+
+
+"""""
