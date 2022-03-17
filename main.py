@@ -1,4 +1,3 @@
-
 import discord
 from discord.ext import commands, tasks
 from discord.ui import *
@@ -18,7 +17,7 @@ from typing import List
 
 
 
-
+global bot
 bot = commands.Bot(command_prefix='~', 
                    help_command=None, 
                    intents = discord.Intents.all(), 
@@ -255,7 +254,6 @@ class Report_Modal(Modal):
 async def report(ctx):
     modal = Report_Modal(title="Report a member")
     await ctx.interaction.response.send_modal(modal)
-
 
 
 
