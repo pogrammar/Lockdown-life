@@ -468,7 +468,7 @@ class ButtonRoleCog(commands.Cog):
         await ctx.respond(embed=embed, view=view)
 
     @slash_command(guild_ids=[918748880705839105], description="Get the game roles")
-    async def rolesbot(self, ctx: commands.Context):
+    async def rolesgame(self, ctx: commands.Context):
         embed = discord.Embed(title="What are your favourite games?", description="<@&954080200239480833>\n<@&952950149678780486>\n<@&954080196951146516>")
 
         view = discord.ui.View(timeout=None)
