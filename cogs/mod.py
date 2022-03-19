@@ -83,7 +83,7 @@ class Moderation(commands.Cog):
     
     @slash_command(guild_ids=[918748880705839105], description="get deh mod app")
     async def mod(self, ctx):
-        await ctx.respond("Mod application: https://forms.gle/XFgGRdoeTeYsD4Fk6")
+        await ctx.respond("Mod application: https://forms.gle/uhiS3SFpRKALEmCe7")
     
 
 def setup(bot):
