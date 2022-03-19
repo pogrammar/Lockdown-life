@@ -1,5 +1,5 @@
 import discord
-from discord import *
+from discord.interactions import Interaction as interaction
 from discord.ext import commands, tasks
 from discord.ui import *
 from itertools import cycle
@@ -98,13 +98,7 @@ async def on_ready():
             )
         )
     
-
-    
-@bot.event
-async def on_member_remove(member):
-    guild = member.guild
-    channel = bot.get_channel(918755817694576650)
-    await channel.send(f"{member.mention} has left. thx for joining...")    
+   
 @bot.event
 async def on_command_error(ctx, error):
     if isinstance(error, commands.CommandOnCooldown):
@@ -305,10 +299,53 @@ class Pronouns(discord.ui.Select):
         )
 
     async def callback(self, interaction: discord.Interaction):
-        guildroles = interaction.guild.roles
-        role = discord.utils.get(guildroles, name=self.values[0])
-        member = discord.Interaction.user
-        await member.add_roles(role)
+        if self.values[0] == "he/him": 
+            user = interaction.user
+            role = user.guild.get_role(953386730357141575)
+            await user.add_roles(role)
+            if role not in user.roles:
+            # Give the user the role if they don't already have it.
+                await user.add_roles(role)
+                await interaction.response.send_message(f"🎉 You have been given the role {role.mention}", ephemeral=True)
+            else:
+                # Else, Take the role from the user
+                await user.remove_roles(role)
+                await interaction.response.send_message(
+                    f"❌ The {role.mention} role has been taken from you", ephemeral=True
+                )            
+
+            
+        if self.values[0] == "she/her":
+            user = interaction.user
+            role = user.guild.get_role(953386719628128276)
+            await user.add_roles(role)
+
+            if role not in user.roles:
+            # Give the user the role if they don't already have it.
+                await user.add_roles(role)
+                await interaction.response.send_message(f"🎉 You have been given the role {role.mention}", ephemeral=True)
+            else:
+                # Else, Take the role from the user
+                await user.remove_roles(role)
+                await interaction.response.send_message(
+                    f"❌ The {role.mention} role has been taken from you", ephemeral=True
+                )           
+                
+        if self.values[0] == "they/them":
+            user = interaction.user
+            role = user.guild.get_role(953386828914892890)
+            await user.add_roles(role)
+
+            if role not in user.roles:
+            # Give the user the role if they don't already have it.
+                await user.add_roles(role)
+                await interaction.response.send_message(f"🎉 You have been given the role {role.mention}", ephemeral=True)
+            else:
+                # Else, Take the role from the user
+                await user.remove_roles(role)
+                await interaction.response.send_message(
+                    f"❌ The {role.mention} role has been taken from you", ephemeral=True
+                )           
 
 class PronounsView(discord.ui.View):
     def __init__(self, bot):
@@ -319,12 +356,174 @@ class PronounsView(discord.ui.View):
         self.add_item(Pronouns(self.bot))
 
 
+class Age(discord.ui.Select):
+    def __init__(self, bot):
+        self.bot = bot
+
+        options = [
+            discord.SelectOption(label="10 - 15", description="Take this if you are in the age group of 10 - 15."),
+            discord.SelectOption(label="15 - 18", description="Take this if you are in the age group of 15 - 18."),
+            discord.SelectOption(label="18 - 22", description="Take this if you are in the age group of 18 - 22."),
+        ]
+
+        super().__init__(
+            placeholder="Choose your Age group",
+            min_values=1,
+            max_values=1,
+            options=options,
+        )
+
+    async def callback(self, interaction: discord.Interaction):
+        if self.values[0] == "10 - 15": 
+            user = interaction.user
+            role = user.guild.get_role(919921179769331712)
+            await user.add_roles(role)
+            if role not in user.roles:
+                await user.add_roles(role)
+                await interaction.response.send_message(f"🎉 You have been given the role {role.mention}", ephemeral=True)
+            else:
+                await user.remove_roles(role)
+                await interaction.response.send_message(
+                    f"❌ The {role.mention} role has been taken from you", ephemeral=True
+                )            
+
+            
+        if self.values[0] == "15 - 18":
+            user = interaction.user
+            role = user.guild.get_role(919921261721833524)
+            await user.add_roles(role)
+
+            if role not in user.roles:
+                await user.add_roles(role)
+                await interaction.response.send_message(f"🎉 You have been given the role {role.mention}", ephemeral=True)
+            else:
+                await user.remove_roles(role)
+                await interaction.response.send_message(
+                    f"❌ The {role.mention} role has been taken from you", ephemeral=True
+                )           
+                
+        if self.values[0] == "18 - 22":
+            user = interaction.user
+            role = user.guild.get_role(919921343452045352)
+            await user.add_roles(role)
+
+            if role not in user.roles:
+                await user.add_roles(role)
+                await interaction.response.send_message(f"🎉 You have been given the role {role.mention}", ephemeral=True)
+            else:
+                await user.remove_roles(role)
+                await interaction.response.send_message(
+                    f"❌ The {role.mention} role has been taken from you", ephemeral=True
+                )           
+
+class AgeView(discord.ui.View):
+    def __init__(self, bot):
+        self.bot = bot
+        super().__init__()
+
+        self.add_item(Age(self.bot))
+
+
+class Ping(discord.ui.Select):
+    def __init__(self, bot):
+        self.bot = bot
+
+        options = [
+            discord.SelectOption(label="Everytime ping", description="Take this if you want to be pinged on every announcement"),
+            discord.SelectOption(label="Now and then ping", description="Take this if you want to be pinged sometimes on an announcement"),
+            discord.SelectOption(label="Lesser ping", description="Take this if you want to be pinged very rarely on an announcement"),
+        ]
+
+        super().__init__(
+            placeholder="Choose your ping frequency",
+            min_values=1,
+            max_values=1,
+            options=options,
+        )
+
+    async def callback(self, interaction: discord.Interaction):
+        if self.values[0] == "Everytime ping": 
+            user = interaction.user
+            role = user.guild.get_role(919969168789504011)
+            await user.add_roles(role)
+            if role not in user.roles:
+                await user.add_roles(role)
+                await interaction.response.send_message(f"🎉 You have been given the role {role.mention}", ephemeral=True)
+            else:
+                await user.remove_roles(role)
+                await interaction.response.send_message(
+                    f"❌ The {role.mention} role has been taken from you", ephemeral=True
+                )            
+
+            
+        if self.values[0] == "Now and then ping":
+            user = interaction.user
+            role = user.guild.get_role(919968883757158431)
+            await user.add_roles(role)
+
+            if role not in user.roles:
+                await user.add_roles(role)
+                await interaction.response.send_message(f"🎉 You have been given the role {role.mention}", ephemeral=True)
+            else:
+                await user.remove_roles(role)
+                await interaction.response.send_message(
+                    f"❌ The {role.mention} role has been taken from you", ephemeral=True
+                )           
+                
+        if self.values[0] == "Lesser ping":
+            user = interaction.user
+            role = user.guild.get_role(919968808700104744)
+            await user.add_roles(role)
+
+            if role not in user.roles:
+                await user.add_roles(role)
+                await interaction.response.send_message(f"🎉 You have been given the role {role.mention}", ephemeral=True)
+            else:
+                await user.remove_roles(role)
+                await interaction.response.send_message(
+                    f"❌ The {role.mention} role has been taken from you", ephemeral=True
+                )           
+
+class PingView(discord.ui.View):
+    def __init__(self, bot):
+        self.bot = bot
+        super().__init__()
+
+        self.add_item(Ping(self.bot))
+
+
+
+
+
+
+
+
+
+
 
 
 @bot.event
 async def on_member_join(member):
-    view = PronounsView(bot)
-    await member.send("Gender roles:", view=view)
+    guild = member.guild
+    channel = bot.get_channel(920885431548145725)
+    
+    embed = discord.Embed(title=f"Hey {member.name}!", description=f"Below are the roles to get started!\n**Please go forward only if you are comfortable with this**")
+    msg = await channel.send(content=f"{member.mention} **You have 15 seconds to select one.** ", embed=embed, view=PronounsView(bot))
+
+    await asyncio.sleep(15)
+
+    await msg.edit(content=f"{member.mention} **You have 15 seconds to select one.** ", view=AgeView(bot), embed=None)
+
+    await asyncio.sleep(15)
+
+    await msg.edit(content=f"{member.mention} **You have 15 seconds to select one.** ", view=PingView(bot), embed=None)
+
+    await asyncio.sleep(15)
+
+    await msg.edit(content=f"{member.mention} You're all set! For more roles like this, go to <#919920530415566848> for color roles, go to <#919614012348579890>\n\n Welcome :grin:", embed=None, view=None)
+
+    
+    
     
 
 
