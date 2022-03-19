@@ -265,5 +265,5 @@ async def report(ctx):
 
 
 keep_alive()
-TOKEN = os.environ.get("DISCORD_BOT_SECRET")
+TOKEN = os.environ["TOKEN"]
 bot.run(TOKEN)
