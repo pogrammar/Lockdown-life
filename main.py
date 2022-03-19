@@ -1,4 +1,5 @@
 import discord
+from discord import *
 from discord.ext import commands, tasks
 from discord.ui import *
 from itertools import cycle
@@ -13,6 +14,7 @@ import json
 import os
 from typing import List
 from webserver import keep_alive
+from discord.guild import Guild
 
 
 
@@ -40,6 +42,15 @@ for filename in os.listdir("./cogs"):# for every file in a folder in cogs
         bot.load_extension(f'cogs.{filename[:-3]}')#load the extension"
 
 # statuses = cycle(["With the API", "Suggest with /suggest!", "/help", "pycord", "With discord imput forms", "Check out my github repo!","/report",])
+
+
+
+
+
+
+
+
+
 
 
 help = SlashCommandGroup(name="help", description="get information on my commands", guild_ids=[918748880705839105])      
@@ -88,12 +99,6 @@ async def on_ready():
         )
     
 
-    
-@bot.event
-async def on_member_join(member):
-    guild = member.guild
-    channel = bot.get_channel(918755817694576650)
-    await channel.send(f"{member.mention} has joined. *Help grow :)*")
     
 @bot.event
 async def on_member_remove(member):
@@ -259,6 +264,76 @@ class Report_Modal(Modal):
 async def report(ctx):
     modal = Report_Modal(title="Report a member")
     await ctx.interaction.response.send_modal(modal)
+
+
+
+
+
+
+
+
+
+
+    
+
+#---------------------------------------Intro-----------------------------------------------------------------------
+    
+
+
+
+
+class Pronouns(discord.ui.Select):
+    def __init__(self, bot):
+        self.bot = bot # For example, you can use self.bot to retrieve a user or perform other functions in the callback.
+        # Alternatively you can use Interaction.client, so you don't need to pass the bot instance.
+        # Set the options that will be presented inside the dropdown
+
+        options = [
+            discord.SelectOption(label="he/him", description="Take this if you are a male.", emoji="♂️"),
+            discord.SelectOption(label="she/her", description="Take this if you are a female", emoji="♀️"),
+            discord.SelectOption(label="they/them", description="Other"),
+        ]
+
+        # The placeholder is what will be shown when no option is chosen
+        # The min and max values indicate we can only pick one of the three options
+        # The options parameter defines the dropdown options. We defined this above
+        super().__init__(
+            placeholder="Choose your Gender pronouns",
+            min_values=1,
+            max_values=1,
+            options=options,
+        )
+
+    async def callback(self, interaction: discord.Interaction):
+        guildroles = interaction.guild.roles
+        role = discord.utils.get(guildroles, name=self.values[0])
+        member = discord.Interaction.user
+        await member.add_roles(role)
+
+class PronounsView(discord.ui.View):
+    def __init__(self, bot):
+        self.bot = bot
+        super().__init__()
+
+        # Adds the dropdown to our view object.
+        self.add_item(Pronouns(self.bot))
+
+
+
+
+@bot.event
+async def on_member_join(member):
+    view = PronounsView(bot)
+    await member.send("Gender roles:", view=view)
+    
+
+
+
+
+
+
+
+
 
 
 
