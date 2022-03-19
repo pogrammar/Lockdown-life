@@ -12,6 +12,11 @@ import asyncio
 import json
 import os
 from typing import List
+from webserver import keep_alive
+
+
+
+
 
 
 
@@ -259,9 +264,6 @@ async def report(ctx):
 
 
 
-
-
-
-
-TOKEN = os.getenv("TOKEN")
+keep_alive()
+TOKEN = os.environ.get("DISCORD_BOT_SECRET")
 bot.run(TOKEN)
