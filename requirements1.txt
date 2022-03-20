@@ -1,4 +1,4 @@
-https://github.com/Pycord-Development/pycord
+git+https://github.com/Pycord-Development/pycord
 asyncdagpi
 git+https://github.com/Skelmis/Discord-Anti-Spam
 flask
