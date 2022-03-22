@@ -1,5 +1,4 @@
 import discord
-from discord.interactions import Interaction as interaction
 from discord.ext import commands, tasks
 from discord.ui import *
 from itertools import cycle
@@ -13,14 +12,6 @@ import asyncio
 import json
 import os
 from typing import List
-from webserver import keep_alive
-from discord.guild import Guild
-
-
-
-
-
-
 
 
 
@@ -42,15 +33,6 @@ for filename in os.listdir("./cogs"):# for every file in a folder in cogs
         bot.load_extension(f'cogs.{filename[:-3]}')#load the extension"
 
 # statuses = cycle(["With the API", "Suggest with /suggest!", "/help", "pycord", "With discord imput forms", "Check out my github repo!","/report",])
-
-
-
-
-
-
-
-
-
 
 
 help = SlashCommandGroup(name="help", description="get information on my commands", guild_ids=[918748880705839105])      
@@ -85,6 +67,14 @@ class helpcommand(commands.Cog):
         e2 = discord.Embed(title="role commands", description="Below are the role commands:\n `rolesage`, `rolesping`,`rolessuggestion`,`rolesanime`,`rolesindian`,`rolesbot`,`rolesgender`,`rolesgame`")
     
         await ctx.respond(embed=e2)    
+    
+    @help.command()
+    async def games(ctx):
+    
+        e2 = discord.Embed(title="minigames", description="Below are the minigames:\n `rps`, `roll`")
+    
+        await ctx.respond(embed=e2)
+    
 
     bot.add_application_command(help)   
 
@@ -98,7 +88,19 @@ async def on_ready():
             )
         )
     
-   
+
+    
+@bot.event
+async def on_member_join(member):
+    guild = member.guild
+    channel = bot.get_channel(918755817694576650)
+    await channel.send(f"{member.mention} has joined. *Help grow :)*")
+    
+@bot.event
+async def on_member_remove(member):
+    guild = member.guild
+    channel = bot.get_channel(918755817694576650)
+    await channel.send(f"{member.mention} has left. thx for joining...")    
 @bot.event
 async def on_command_error(ctx, error):
     if isinstance(error, commands.CommandOnCooldown):
@@ -268,6 +270,7 @@ async def report(ctx):
 
 
 
+
     
 
 #---------------------------------------Intro-----------------------------------------------------------------------
@@ -299,9 +302,10 @@ class Pronouns(discord.ui.Select):
         )
 
     async def callback(self, interaction: discord.Interaction):
-        if self.values[0] == "he/him": 
-            user = interaction.user
-            role = user.guild.get_role(953386730357141575)
+        if self.values[0] == "he/him":
+            guild = bot.get_guild(918748880705839105)
+            user = guild.get_member(interaction.user.id)
+            role = guild.get_role(953386730357141575)
             await user.add_roles(role)
             if role not in user.roles:
             # Give the user the role if they don't already have it.
@@ -316,8 +320,9 @@ class Pronouns(discord.ui.Select):
 
             
         if self.values[0] == "she/her":
-            user = interaction.user
-            role = user.guild.get_role(953386719628128276)
+            guild = bot.get_guild(918748880705839105)
+            user = guild.get_member(interaction.user.id)
+            role = guild.get_role(953386719628128276)
             await user.add_roles(role)
 
             if role not in user.roles:
@@ -332,8 +337,9 @@ class Pronouns(discord.ui.Select):
                 )           
                 
         if self.values[0] == "they/them":
-            user = interaction.user
-            role = user.guild.get_role(953386828914892890)
+            guild = bot.get_guild(918748880705839105)
+            user = guild.get_member(interaction.user.id)
+            role = guild.get_role(953386828914892890)
             await user.add_roles(role)
 
             if role not in user.roles:
@@ -375,8 +381,9 @@ class Age(discord.ui.Select):
 
     async def callback(self, interaction: discord.Interaction):
         if self.values[0] == "10 - 15": 
-            user = interaction.user
-            role = user.guild.get_role(919921179769331712)
+            guild = bot.get_guild(918748880705839105)
+            user = guild.get_member(interaction.user.id)
+            role = guild.get_role(919921179769331712)
             await user.add_roles(role)
             if role not in user.roles:
                 await user.add_roles(role)
@@ -389,8 +396,9 @@ class Age(discord.ui.Select):
 
             
         if self.values[0] == "15 - 18":
-            user = interaction.user
-            role = user.guild.get_role(919921261721833524)
+            guild = bot.get_guild(918748880705839105)
+            user = guild.get_member(interaction.user.id)
+            role = guild.get_role(919921261721833524)
             await user.add_roles(role)
 
             if role not in user.roles:
@@ -403,8 +411,9 @@ class Age(discord.ui.Select):
                 )           
                 
         if self.values[0] == "18 - 22":
-            user = interaction.user
-            role = user.guild.get_role(919921343452045352)
+            guild = bot.get_guild(918748880705839105)
+            user = guild.get_member(interaction.user.id)
+            role = guild.get_role(919921343452045352)
             await user.add_roles(role)
 
             if role not in user.roles:
@@ -443,8 +452,9 @@ class Ping(discord.ui.Select):
 
     async def callback(self, interaction: discord.Interaction):
         if self.values[0] == "Everytime ping": 
-            user = interaction.user
-            role = user.guild.get_role(919969168789504011)
+            guild = bot.get_guild(918748880705839105)
+            user = guild.get_member(interaction.user.id)
+            role = guild.get_role(919969168789504011)
             await user.add_roles(role)
             if role not in user.roles:
                 await user.add_roles(role)
@@ -457,8 +467,9 @@ class Ping(discord.ui.Select):
 
             
         if self.values[0] == "Now and then ping":
-            user = interaction.user
-            role = user.guild.get_role(919968883757158431)
+            guild = bot.get_guild(918748880705839105)
+            user = guild.get_member(interaction.user.id)
+            role = guild.get_role(919968883757158431)
             await user.add_roles(role)
 
             if role not in user.roles:
@@ -471,8 +482,9 @@ class Ping(discord.ui.Select):
                 )           
                 
         if self.values[0] == "Lesser ping":
-            user = interaction.user
-            role = user.guild.get_role(919968808700104744)
+            guild = bot.get_guild(918748880705839105)
+            user = guild.get_member(interaction.user.id)
+            role = guild.get_role(919968808700104744)
             await user.add_roles(role)
 
             if role not in user.roles:
@@ -504,11 +516,8 @@ class PingView(discord.ui.View):
 
 @bot.event
 async def on_member_join(member):
-    guild = member.guild
-    channel = bot.get_channel(920885431548145725)
-    
     embed = discord.Embed(title=f"Hey {member.name}!", description=f"Below are the roles to get started!\n**Please go forward only if you are comfortable with this**")
-    msg = await channel.send(content=f"{member.mention} **You have 15 seconds to select one.** ", embed=embed, view=PronounsView(bot))
+    msg = await member.send(content=f"{member.mention} **You have 15 seconds to select one.** ", embed=embed, view=PronounsView(bot))
 
     await asyncio.sleep(15)
 
@@ -536,8 +545,4 @@ async def on_member_join(member):
 
 
 
-
-
-keep_alive()
-TOKEN = os.environ["TOKEN"]
-bot.run(TOKEN)
+bot.run("OTIwOTAwMDA2NDE0NzkwNzA3.YbrE9w.a6XuFjXarPG4ab-62DflrS9eFuI")
