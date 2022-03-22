@@ -545,4 +545,4 @@ async def on_member_join(member):
 
 
 
-bot.run("OTIwOTAwMDA2NDE0NzkwNzA3.YbrE9w.a6XuFjXarPG4ab-62DflrS9eFuI")
+bot.run(TOKEn)
